@@ -1,0 +1,22 @@
+{
+  "name": "sadl/learning-framework",
+  "description": "A PHP framework tutorial project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sven Adler"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sadl\\Framework\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require-dev": {
+    "symfony/var-dumper": "7.0.x-dev"
+  },
+  "require": {
+    "nikic/fast-route": "2.0.x-dev"
+  }
+}
