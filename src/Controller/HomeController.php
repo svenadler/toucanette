@@ -2,17 +2,26 @@
 
 namespace App\Controller;
 
+use App\Widget;
+use Sadl\Framework\Controller\AbstractController;
 use Sadl\Framework\Http\Response;
 
-class HomeController
+class HomeController extends AbstractController
 {
     /**
+     * @param \App\Widget $widget
+     */
+    public function __construct(private Widget $widget)
+    {
+    }
+
+    /**
      * @return \Sadl\Framework\Http\Response
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function index(): Response
     {
-        $content = '<h1>Hello World</h1>';
-
-        return new Response($content);
+        return $this->render('home.twig');
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29bee739bb447feae0c609d6602b8adc",
+    "content-hash": "1e760d7bdc7d38d4969ac1b36be57c36",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -659,50 +659,6 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
             "time": "2021-07-14T16:46:02+00:00"
-        },
-        {
-            "name": "sadl/learning-framework",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "framework",
-                "reference": "4b70e54bb7d2d54e22b61bb1fda77447b4c050f2"
-            },
-            "require": {
-                "doctrine/dbal": "^3.6",
-                "league/container": "^4.0.0",
-                "nikic/fast-route": "2.0.x-dev",
-                "psr/container": "2.0.x-dev",
-                "symfony/dotenv": "^6.0",
-                "twig/twig": "^3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "11.0.x-dev",
-                "symfony/var-dumper": "7.0.x-dev"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Sadl\\Framework\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Sadl\\Framework\\Tests\\": "tests"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sven Adler"
-                }
-            ],
-            "description": "A PHP framework tutorial project",
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "symfony/dotenv",
@@ -2844,7 +2800,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "sadl/learning-framework": 20,
         "nikic/fast-route": 20,
         "psr/container": 20,
         "symfony/var-dumper": 20,

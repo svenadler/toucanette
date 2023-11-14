@@ -2,7 +2,9 @@
 
 namespace Sadl\Framework\Exception;
 
-class HttpException extends \Exception
+use Exception;
+
+class HttpException extends Exception
 {
     /**
      * @var int

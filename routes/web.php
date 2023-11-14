@@ -7,6 +7,7 @@ use Sadl\Framework\Http\Response;
 return [
     ['GET', '/', [HomeController::class, 'index']],
     ['GET', '/posts/{id:\d+}', [PostsController::class, 'show']],
+    ['GET', '/posts', [PostsController::class, 'create']],
     ['GET', '/hello/{name:.+}', function(string $name) {
         return new Response("Hello $name");
     }]

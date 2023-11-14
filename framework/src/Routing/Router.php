@@ -4,6 +4,7 @@ namespace Sadl\Framework\Routing;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use Psr\Container\ContainerInterface;
 use Sadl\Framework\Exception\HttpException;
 use Sadl\Framework\Exception\HttpRequestMethodException;
 use Sadl\Framework\Http\Request;
@@ -13,24 +14,43 @@ use function FastRoute\simpleDispatcher;
 class Router implements RouterInterface
 {
     /**
+     * @var array
+     */
+    protected array $routes = [];
+
+    /**
      * @param \Sadl\Framework\Http\Request $request
+     * @param \Psr\Container\ContainerInterface $container
      *
      * @return array
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Sadl\Framework\Exception\HttpException
      * @throws \Sadl\Framework\Exception\HttpRequestMethodException
      */
-    public function dispatch(Request $request): array
+    public function dispatch(Request $request, ContainerInterface $container): array
     {
         $routeInfo = $this->extractRouteInformation($request);
 
         [$handler, $vars] = $routeInfo;
 
         if (is_array($handler)) {
-            [$controller, $method] = $handler;
-            $handler = [new $controller, $method];
+            [$controllerId, $method] = $handler;
+            $controller = $container->get($controllerId);
+            $handler = [$controller, $method];
         }
 
         return [$handler, $vars];
+    }
+
+    /**
+     * @param array $routes
+     *
+     * @return void
+     */
+    public function setRoutes(array $routes): void
+    {
+        $this->routes = $routes;
     }
 
     /**
@@ -44,9 +64,7 @@ class Router implements RouterInterface
     {
         // Create a dispatcher
         $dispatcher = simpleDispatcher(function (RouteCollector $routeCollector) {
-            $routes = include BASE_PATH.'/routes/web.php';
-
-            foreach ($routes as $route) {
+            foreach ($this->routes as $route) {
                 $routeCollector->addRoute(...$route);
             }
         });

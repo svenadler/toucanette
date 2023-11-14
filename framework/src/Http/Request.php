@@ -4,6 +4,13 @@ namespace Sadl\Framework\Http;
 
 readonly class Request
 {
+    /**
+     * @param array $getParams
+     * @param array $postParams
+     * @param array $cookies
+     * @param array $files
+     * @param array $server
+     */
     public function __construct(
         public array $getParams,
         public array $postParams,

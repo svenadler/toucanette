@@ -5,6 +5,11 @@ namespace Sadl\Framework\Http;
 class Response
 {
     /**
+     * @var int
+     */
+    public const HTTP_INTERNAL_SERVER_ERROR = 500;
+
+    /**
      * @param string|null $content
      * @param int $status
      * @param array $headers
@@ -23,5 +28,15 @@ class Response
     public function send(): void
     {
         echo $this->content;
+    }
+
+    /**
+     * @param string|null $content
+     *
+     * @return void
+     */
+    public function setContent(?string $content): void
+    {
+        $this->content = $content;
     }
 }

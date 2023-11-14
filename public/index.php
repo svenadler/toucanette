@@ -6,13 +6,13 @@ use Sadl\Framework\Http\Request;
 
 define("BASE_PATH", dirname(__DIR__));
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
+require_once BASE_PATH . '/vendor/autoload.php';
+
+$container = require BASE_PATH . '/config/services.php';
 
 $request = Request::createFromGlobals();
 
-$router = new Router();
-
-$kernel = new Kernel($router);
+$kernel = $container->get(Kernel::class);
 
 $response = $kernel->handle($request);
 
