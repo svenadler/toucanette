@@ -14,11 +14,4 @@ interface RouterInterface
      * @return array
      */
     public function dispatch(Request $request, ContainerInterface $container): array;
-
-    /**
-     * @param array $routes
-     *
-     * @return void
-     */
-    public function setRoutes(array $routes): void;
 }

@@ -8,12 +8,12 @@ use Sadl\Framework\Http\Response;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @param \App\Widget $widget
-     */
-    public function __construct(private Widget $widget)
-    {
-    }
+//    /**
+//     * @param \App\Widget $widget
+//     */
+//    public function __construct(private Widget $widget) // TODO find out if Widget is really needed here
+//    {
+//    }
 
     /**
      * @return \Sadl\Framework\Http\Response
